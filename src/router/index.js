@@ -1,20 +1,20 @@
-import { createRouter, createWebHistory } from "vue-router";
-import IndexPage from "@/router/IndexPage.vue";
-import StickerPage from "../components/StickerPage.vue";
+import { createRouter, createWebHistory } from 'vue-router';
+import IndexPage from '@/router/IndexPage.vue';
+import StickerPage from '../components/StickerPage.vue';
 const routes = [
 	{
-		path: "/",
-		name: "index",
+		path: '/',
+		name: 'index',
 		component: IndexPage,
 	},
-	{ path: "/sticker", name: "Sticker", component: StickerPage },
+	{ path: '/sticker', name: 'Sticker', component: StickerPage },
 ];
 if (import.meta.env.DEV) {
-	routes.push({ path: "/pixelperfect" });
+	routes.push({ path: '/pixelperfect' });
 }
 routes.push({
-	path: "/:catchAll(.*)",
-	redirect: "/",
+	path: '/:catchAll(.*)',
+	redirect: '/',
 });
 
 const router = createRouter({
