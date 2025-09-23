@@ -11,37 +11,37 @@
 
 <style scoped lang="scss">
 .index-page {
-	padding: 0 20px;
+	max-width: 400px;
 	margin: 0 auto;
-	max-width: 400px; /* ограничим ширину для лучшей читабельности */
+	padding: 0 20px;
 	text-align: center;
 
 	&__link {
 		display: inline-flex;
 		flex-direction: column;
-		font-size: 14px;
 		font-weight: 600;
-		color: #007bff;
+		font-size: 14px;
+		color: $blue;
 		text-decoration: none;
 		cursor: pointer;
 		transition: color 0.3s ease;
 
 		&:visited {
-			color: #0056b3;
+			color: $blue;
 		}
 
 		&:hover,
 		&:focus {
-			color: #003f7f;
+			color: $blueDark;
 			text-decoration: underline;
 		}
 	}
 
 	&__note {
-		font-size: 12px;
-		font-weight: 400;
-		color: #555;
 		margin-top: 4px;
+		font-weight: 400;
+		font-size: 12px;
+		color: $grey;
 	}
 }
 </style>

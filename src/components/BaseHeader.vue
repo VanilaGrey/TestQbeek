@@ -5,17 +5,17 @@
 </template>
 
 <script setup>
-import { useRoute } from "vue-router";
-import { computed } from "vue";
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
 
 const route = useRoute();
 
 const pageTitle = computed(() => {
-	if (route.path === "/") {
-		return "Главная страница";
-	} else if (route.path === "/sticker") {
-		return "Организуй котиков на свой вкус";
+	if (route.path === '/') {
+		return 'Главная страница';
+	} else if (route.path === '/sticker') {
+		return 'Организуй котиков на свой вкус!';
 	}
-	return "";
+	return '';
 });
 </script>

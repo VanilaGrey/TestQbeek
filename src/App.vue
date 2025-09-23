@@ -7,9 +7,9 @@
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router';
-import BaseHeader from './components/BaseHeader.vue';
-import BaseFooter from './components/BaseFooter.vue';
+import { RouterView } from "vue-router";
+import BaseHeader from "./components/BaseHeader.vue";
+import BaseFooter from "./components/BaseFooter.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -18,6 +18,8 @@ import BaseFooter from './components/BaseFooter.vue';
 	flex-direction: column;
 	min-height: 100vh;
 	overflow: hidden auto;
+	padding: 20px;
+	margin: 0 auto;
 
 	&__main {
 		flex-grow: 1;

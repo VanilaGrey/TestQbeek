@@ -10,6 +10,7 @@
 				:key="cat"
 				:src="cat"
 				@click="selectCat(cat)"
+				:class="{ used: catStore.selectedCats.includes(cat) }"
 				alt="котик"
 				draggable="false"
 			/>
@@ -49,7 +50,9 @@ const visibleCats = computed(() =>
 );
 
 const selectCat = (url) => {
-	if (!catStore.selectedCats.includes(url)) {
+	if (catStore.selectedCats.includes(url)) {
+		catStore.removeCat(url);
+	} else {
 		catStore.addCat(url);
 	}
 };
@@ -62,14 +65,14 @@ onMounted(loadCats);
 	position: fixed;
 	top: 50%;
 	right: 0;
-	transform: translateY(-50%);
 	width: 100px;
 	height: 330px;
-	background: #ffffff;
 	padding: 10px;
+	overflow: hidden;
+	background-color: $white;
 	border-radius: 10px;
 	box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
-	overflow: hidden;
+	transform: translateY(-50%);
 	cursor: pointer;
 	transition: width 0.35s ease, height 0.35s ease;
 
@@ -79,41 +82,47 @@ onMounted(loadCats);
 	}
 
 	&__content {
-		height: 100%;
-		padding: 10px;
+		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		height: 100%;
+		padding: 10px;
 		overflow-y: auto;
-		scrollbar-width: none; /* Firefox */
+		gap: 12px;
+		scrollbar-width: none;
 
 		&::-webkit-scrollbar {
-			display: none; /* Chrome, Safari */
+			display: none;
 		}
 
 		img {
 			width: 100%;
-			aspect-ratio: 1 / 1;
+			background: $white;
 			border-radius: 6px;
-			background: #f8f8f8;
-			object-fit: contain;
-			user-select: none;
 			transition: transform 0.2s ease;
+			user-select: none;
+			aspect-ratio: 1 / 1;
+			object-fit: contain;
 
 			&:hover {
-				transform: scale(1.05);
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				transform: scale(1.05);
+			}
+
+			&.used {
+				filter: brightness(0.5);
+				transition: filter 0.3s ease;
 			}
 		}
 	}
 
 	&__loading {
-		height: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		height: 100%;
 		font-size: 14px;
-		color: #666;
+		color: $grey;
 		user-select: none;
 	}
 
@@ -121,21 +130,21 @@ onMounted(loadCats);
 		position: absolute;
 		bottom: -5px;
 		left: 23px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 80px;
 		height: 40px;
-		transform: translateY(-50%);
-		background: #ddd;
+		background: $greyLight;
 		border-radius: 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		transform: translateY(-50%);
 
 		&-arrow {
 			width: 0;
 			height: 0;
 			border-top: 8px solid transparent;
+			border-right: 12px solid $grey;
 			border-bottom: 8px solid transparent;
-			border-right: 12px solid #888;
 		}
 	}
 }
